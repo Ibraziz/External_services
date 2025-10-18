@@ -63,8 +63,7 @@ class EURLexClient:
         page: int = 1,
         page_size: int = 10,
         search_language: str = "en",
-        exclude_all_consleg: bool = False,
-        limit_to_latest_consleg: bool = False,
+        legislation: bool = True,
         timeout: int = 30,
     ) -> Dict[str, Any]:
         """
@@ -92,36 +91,35 @@ class EURLexClient:
         if search_language not in self.VALID_LANGUAGES:
             raise ValueError(f"Invalid language: {search_language}")
 
-        # Convert booleans to strings
-        exclude_str = "true" if exclude_all_consleg else "false"
-        limit_str = "true" if limit_to_latest_consleg else "false"
+        # legislation filter
+        legislation_str = " AND DTS_SUBDOM = LEGISLATION" if legislation else ""
+        full_query = expert_query + legislation_str
 
+        
         # Build SOAP envelope
-        soap_body = f"""<?xml version="1.0" encoding="UTF-8"?>
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sear="http://eur-lex.europa.eu/search">
-    <soap:Header>
-        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" soap:mustUnderstand="true">
-            <wsse:UsernameToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="UsernameToken-1">
-                <wsse:Username>{self.username}</wsse:Username>
-                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{self.password}</wsse:Password>
-            </wsse:UsernameToken>
-        </wsse:Security>
-    </soap:Header>
-    <soap:Body>
-        <sear:searchRequest>
-            <sear:expertQuery>{expert_query.strip()}</sear:expertQuery>
-            <sear:page>{page}</sear:page>
-            <sear:pageSize>{page_size}</sear:pageSize>
-            <sear:searchLanguage>{search_language}</sear:searchLanguage>
-            <sear:excludeAllConsleg>{exclude_str}</sear:excludeAllConsleg>
-            <sear:limitToLatestConsleg>{limit_str}</sear:limitToLatestConsleg>
-        </sear:searchRequest>
-    </soap:Body>
-</soap:Envelope>"""
+        soap_body = f"""
+        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sear="http://eur-lex.europa.eu/search">
+  <soap:Header>
+    <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" soap:mustUnderstand="true">
+      <wsse:UsernameToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="UsernameToken-1">
+        <wsse:Username>{self.username}</wsse:Username>
+        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{self.password}</wsse:Password>
+      </wsse:UsernameToken>
+    </wsse:Security>
+  </soap:Header>
+  <soap:Body>
+    <sear:searchRequest>
+      <sear:expertQuery><![CDATA[{full_query}]]></sear:expertQuery>
+      <sear:page>{page}</sear:page>
+      <sear:pageSize>{page_size}</sear:pageSize>
+      <sear:searchLanguage>{search_language}</sear:searchLanguage>
+    </sear:searchRequest>
+  </soap:Body>
+</soap:Envelope>
+"""
 
         headers = {
             "Content-Type": "application/soap+xml; charset=utf-8",
-            "SOAPAction": "https://eur-lex.europa.eu/EURLexWebService/doQuery",
         }
 
         try:
@@ -145,7 +143,7 @@ class EURLexClient:
                     "results": [],
                 }
 
-            #self._save_xml_response(response.content, page, expert_query)
+            self._save_xml_response(response.content, page, expert_query)
 
             # Parse XML response
             result = self._parse_xml_response(response.content)
@@ -176,7 +174,8 @@ class EURLexClient:
                 "language": search_language,
                 "results": [],
             }
-    #option to save xml responses for debugging
+
+    # option to save xml responses for debugging
     def _save_xml_response(self, xml_content: bytes, page: int, query: str) -> None:
         """Save XML response to file for debugging."""
         try:
@@ -197,7 +196,6 @@ class EURLexClient:
             # Don't fail the main request if saving fails
             print(f"Warning: Could not save XML response: {str(e)}")
 
-    
     def _parse_xml_response(self, xml_content: bytes) -> Dict[str, Any]:
         """Parse the SOAP XML response."""
         result = {"numhits": 0, "totalhits": 0, "results": []}
@@ -328,6 +326,7 @@ if __name__ == "__main__":
                     if "document_links" in doc:
                         for link in doc["document_links"][:2]:
                             print(f"   {link['type']}: {link['url']}")
+
         else:
             print(f"\n✗ Failed: {results['error']}")
 

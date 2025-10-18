@@ -1,28 +1,149 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import List, Optional
+from eurlex_client import EURLexClient
 
-app = FastAPI(title="Law Service")
+app = FastAPI(
+    title="Law Service",
+    description="RESTful API wrapper for EUR-Lex document search"
+)
+
+# Initialize EUR-Lex client (credentials loaded from .env)
+try:
+    eurlex_client = EURLexClient()
+except ValueError as e:
+    print(f"Warning: EUR-Lex client initialization failed: {e}")
+    eurlex_client = None
 
 
-class LawRequest(BaseModel):
-    text: str
+# Request/Response Models
+class SearchRequest(BaseModel):
+    query: str
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "query": "QUICK_SEARCH ~ transport"
+            }
+        }
 
 
-class LawResponse(BaseModel):
-    text: str
+class DocumentLink(BaseModel):
+    type: str
+    url: str
 
 
-@app.post("/check", response_model=LawResponse)
-async def check_law(request: LawRequest):
+class Document(BaseModel):
+    title: str
+    language: str
+    links: List[DocumentLink]
+    reference: Optional[str] = None
+    rank: Optional[int] = None
+
+
+class SearchResponse(BaseModel):
+    success: bool
+    total_hits: int
+    num_results: int
+    documents: List[Document]
+    error: Optional[str] = None
+
+
+# Endpoints
+@app.post("/search", response_model=SearchResponse)
+async def search_documents(request: SearchRequest):
     """
-    Simple law service that returns the input text as-is.
+    Search EUR-Lex documents using expert query syntax.
+    
+    Example queries:
+    - `QUICK_SEARCH ~ transport`
+    - `QUICK_SEARCH ~ "non-disclosure" AND QUICK_SEARCH ~ agreement`
+    - `QUICK_SEARCH ~ "air transport"`
     """
-    return LawResponse(text=request.text)
+    if not eurlex_client:
+        raise HTTPException(
+            status_code=503,
+            detail="EUR-Lex client not initialized. Check credentials."
+        )
+    
+    if not request.query or not request.query.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Query parameter is required and cannot be empty"
+        )
+    
+    # Call EUR-Lex client with default parameters
+    results = eurlex_client.search_documents(
+        expert_query=request.query
+        # All other parameters use their defaults:
+        # page=1, page_size=10, search_language="en",
+        # exclude_all_consleg=False, limit_to_latest_consleg=False
+    )
+    
+    # Check if search was successful
+    if not results.get('success', False):
+        return SearchResponse(
+            success=False,
+            total_hits=0,
+            num_results=0,
+            documents=[],
+            error=results.get('error', 'Unknown error occurred')
+        )
+    
+    # Transform results to our response format
+    documents = []
+    for doc in results.get('results', []):
+        # Extract content
+        content = doc.get('content', {})
+        title = content.get('title', 'No title available')
+        language = content.get('language', 'unknown')
+        
+        # Extract links
+        links = [
+            DocumentLink(type=link['type'], url=link['url'])
+            for link in doc.get('document_links', [])
+        ]
+        
+        # Create document object
+        documents.append(Document(
+            title=title,
+            language=language,
+            links=links,
+            reference=doc.get('reference'),
+            rank=doc.get('rank')
+        ))
+    
+    return SearchResponse(
+        success=True,
+        total_hits=results.get('totalhits', 0),
+        num_results=results.get('numhits', 0),
+        documents=documents,
+        error=None
+    )
 
 
 @app.get("/")
 async def root():
-    return {"message": "Law Service is running"}
+    """Health check endpoint."""
+    return {
+        "message": "Law Service is running",
+        "status": "healthy",
+        "client_initialized": eurlex_client is not None
+    }
+
+
+@app.get("/languages")
+async def get_languages():
+    """Get list of available search languages."""
+    if not eurlex_client:
+        raise HTTPException(
+            status_code=503,
+            detail="EUR-Lex client not initialized"
+        )
+    
+    return {
+        "languages": eurlex_client.get_available_languages()
+    }
 
 
 if __name__ == "__main__":

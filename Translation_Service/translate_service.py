@@ -1,17 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
-import os
 from fastapi.responses import JSONResponse
 from openai import OpenAI
+import logging
 
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Translation Service")
 
-
+# Connect to local vLLM server
 client = OpenAI(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    api_key="dummy",
+    base_url="http://localhost:8080/v1"
 )
 
 
@@ -23,34 +26,34 @@ class TranslationRequest(BaseModel):
 class TranslationResponse(BaseModel):
     translated_text: str
 
-
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
-    """
-    Translation service that uses Gemini Flash model to translate text.
-
-    Args:
-        request: Contains text to translate and target_language
-
-    Returns:
-        TranslationResponse with translated text
-    """
+    """Translation service using Gemma-3-12b"""
+    
+    logger.info(f"Translation request: '{request.text}' -> {request.target_language}")
+    
     try:
-        # Create the translation prompt
-        prompt = f"Translate the following text to {request.target_language}. Only provide the translation, no explanations or additional text:\n\n{request.text}"
+        # MUCH SIMPLER PROMPT - conversational style
+        prompt = f"Translate to {request.target_language}: {request.text}"
+        
+        logger.info(f"Sending prompt: {prompt}")
 
-        # Call Gemini Flash model via OpenAI library
         response = client.chat.completions.create(
-            model="gemini-2.5-flash",
+            model="google/gemma-2-9b-it",
             messages=[
-                {"role": "system", "content": "You are a helpful translator."},
-                {"role": "user", "content": prompt},
+                {"role": "user", "content": prompt}
             ],
-            temperature=0.3,  
+            temperature=0.2,
         )
 
-        # Extract the translated text
+        logger.info(f"Raw response: {response}")
+        
+        if not response.choices or not response.choices[0].message.content:
+            logger.error("Empty response from model!")
+            raise HTTPException(status_code=500, detail="Model returned empty response")
+
         translated_text = response.choices[0].message.content.strip()
+        logger.info(f"Translated: '{translated_text}'")
 
         return JSONResponse(
             content={"translated_text": translated_text},
@@ -58,8 +61,8 @@ async def translate_text(request: TranslationRequest):
         )
 
     except Exception as e:
+        logger.error(f"Translation error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Translation error: {str(e)}")
-
 
 @app.get("/")
 async def root():

@@ -1,7 +1,15 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import List, Optional
 from eurlex_client import EURLexClient
+from openai import OpenAI
+import logging
+
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Law Service",
@@ -47,6 +55,56 @@ class SearchResponse(BaseModel):
     num_results: int
     documents: List[Document]
     error: Optional[str] = None
+
+
+# Connect to local vLLM server
+client = OpenAI(
+    api_key="dummy",
+    base_url="http://localhost:8080/v1"
+)
+
+class LawkeywordsRequest(BaseModel):
+    text: str
+
+class LawkeywordsResponse(BaseModel):
+    keywords: str
+
+@app.post("/Lawkeywords", response_model=LawkeywordsResponse)
+async def extract_law_keywords(request: LawkeywordsRequest):
+    """relevant keywords service using Gemma-2-9b"""
+    
+    logger.info(f"Extracting law keywords from text: '{request.text[:100]}...'")
+    
+    try:
+        # MUCH SIMPLER PROMPT - conversational style
+        prompt = f"Given the following contract, identify the 3 most relevant law keywords as single words, no extra information: {request.text}"
+        
+        logger.info(f"Sending prompt: {prompt}")
+
+        response = client.chat.completions.create(
+            model="google/gemma-2-9b-it",
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+        )
+
+        logger.info(f"Raw response: {response}")
+        
+        if not response.choices or not response.choices[0].message.content:
+            logger.error("Empty response from model!")
+            raise HTTPException(status_code=500, detail="Model returned empty response")
+
+        keywords_text = response.choices[0].message.content.strip()
+        logger.info(f"Keywords: '{keywords_text}'")
+
+        return LawkeywordsResponse(keywords=keywords_text)
+
+    except Exception as e:
+        logger.error(f"Keyword extraction error: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Keyword extraction error: {str(e)}")
+
+
 
 
 # Endpoints

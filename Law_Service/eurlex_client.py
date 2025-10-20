@@ -142,8 +142,8 @@ class EURLexClient:
                     "language": search_language,
                     "results": [],
                 }
-
-            self._save_xml_response(response.content, page, expert_query)
+            #if you wanna save the response
+            #self._save_xml_response(response.content, page, expert_query)
 
             # Parse XML response
             result = self._parse_xml_response(response.content)

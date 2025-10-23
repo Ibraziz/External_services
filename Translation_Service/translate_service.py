@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from openai import OpenAI
 import logging
@@ -13,8 +14,10 @@ app = FastAPI(title="Translation Service")
 
 # Connect to local vLLM server
 client = OpenAI(
-    api_key="dummy",
-    base_url="http://localhost:8080/v1"
+    # api_key="dummy",
+    # base_url="http://localhost:8080/v1"
+    base_url="https://router.huggingface.co/v1",
+    api_key = ""
 )
 
 
@@ -24,40 +27,43 @@ class TranslationRequest(BaseModel):
 
 
 class TranslationResponse(BaseModel):
-    translated_text: str
+    translation: str
+    source_language: str
+    confidence: float
+
 
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
-    """Translation service using Gemma-3-12b"""
     
     logger.info(f"Translation request: '{request.text}' -> {request.target_language}")
     
     try:
-        # MUCH SIMPLER PROMPT - conversational style
-        prompt = f"Translate to {request.target_language}: {request.text}"
         
-        logger.info(f"Sending prompt: {prompt}")
-
-        response = client.chat.completions.create(
+        prompt = f"Translate the following text to {request.target_language}: {request.text}"
+        
+        response = client.responses.parse(
             model="google/gemma-2-9b-it",
-            messages=[
+            input=[
+                {"role": "system", "content": "Translate the user's text to the specified target language without adding any extra information."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.2,
+            text_format = TranslationResponse
         )
 
-        logger.info(f"Raw response: {response}")
+        logger.info(f"Raw response: {response.output_parsed}")
         
-        if not response.choices or not response.choices[0].message.content:
+        if not response.output_parsed:
             logger.error("Empty response from model!")
             raise HTTPException(status_code=500, detail="Model returned empty response")
 
-        translated_text = response.choices[0].message.content.strip()
-        logger.info(f"Translated: '{translated_text}'")
+        translated_text = response.output_parsed
+        logger.info(f"Translated: '{translated_text.translation}'")
+
+        response_json = jsonable_encoder({"translated_text": translated_text.translation})
 
         return JSONResponse(
-            content={"translated_text": translated_text},
-            media_type="application/json; charset=utf-8"
+            content=response_json
         )
 
     except Exception as e:

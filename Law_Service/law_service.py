@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import List, Optional
@@ -27,7 +28,7 @@ except ValueError as e:
 # Request/Response Models
 class SearchRequest(BaseModel):
     query: str
-    
+
     class Config:
         json_schema_extra = {
             "example": {
@@ -59,46 +60,50 @@ class SearchResponse(BaseModel):
 
 # Connect to local vLLM server
 client = OpenAI(
-    api_key="dummy",
-    base_url="http://localhost:8080/v1"
+    # api_key="dummy",
+    # base_url="http://localhost:8080/v1"
+    base_url="https://router.huggingface.co/v1",
+    api_key = ""
 )
 
 class LawkeywordsRequest(BaseModel):
-    text: str
+    query: str
 
 class LawkeywordsResponse(BaseModel):
-    keywords: str
+    keywords: list[str]
 
 @app.post("/Lawkeywords", response_model=LawkeywordsResponse)
 async def extract_law_keywords(request: LawkeywordsRequest):
     """relevant keywords service using Gemma-2-9b"""
     
-    logger.info(f"Extracting law keywords from text: '{request.text[:100]}...'")
+    logger.info(f"Extracting law keywords from text: '{request.query[:100]}...'")
     
     try:
-        # MUCH SIMPLER PROMPT - conversational style
-        prompt = f"Given the following contract, identify the 3 most relevant law keywords as single words, no extra information: {request.text}"
+        
+        prompt = f"Given the following text, identify the 3 most relevant legal/law keywords: {request.query}"
         
         logger.info(f"Sending prompt: {prompt}")
 
-        response = client.chat.completions.create(
+        response = client.responses.parse(
             model="google/gemma-2-9b-it",
-            messages=[
+            input=[
+                {"role": "system", "content": "your task is to extract legal/law keywords from the user's text. Provide only the keywords without any additional information. the keywords should be relevant to legal contexts and fully capture the text."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
+            text_format = LawkeywordsResponse
         )
 
-        logger.info(f"Raw response: {response}")
+        logger.info(f"Raw response: {response.output_parsed}")
         
-        if not response.choices or not response.choices[0].message.content:
+        if not response.output_parsed:
             logger.error("Empty response from model!")
             raise HTTPException(status_code=500, detail="Model returned empty response")
 
-        keywords_text = response.choices[0].message.content.strip()
+        keywords_text =  response.output_parsed
         logger.info(f"Keywords: '{keywords_text}'")
 
-        return LawkeywordsResponse(keywords=keywords_text)
+        return LawkeywordsResponse(keywords=keywords_text.keywords)
 
     except Exception as e:
         logger.error(f"Keyword extraction error: {str(e)}", exc_info=True)

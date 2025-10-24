@@ -91,10 +91,12 @@ class EURLexClient:
         if search_language not in self.VALID_LANGUAGES:
             raise ValueError(f"Invalid language: {search_language}")
 
+        
+        expert_query = f"QUICK_SEARCH ~ {expert_query}"
         # legislation filter
         legislation_str = " AND DTS_SUBDOM = LEGISLATION" if legislation else ""
         full_query = expert_query + legislation_str
-
+        print(f"Full query: ![CDATA[{full_query}]")
         
         # Build SOAP envelope
         soap_body = f"""
@@ -131,6 +133,9 @@ class EURLexClient:
                 timeout=timeout,
             )
 
+            #save xml response
+            #self._save_xml_response(response.content, page, full_query)
+            
             # Check for HTTP errors
             if response.status_code != 200:
                 return {
@@ -142,8 +147,6 @@ class EURLexClient:
                     "language": search_language,
                     "results": [],
                 }
-            #if you wanna save the response
-            #self._save_xml_response(response.content, page, expert_query)
 
             # Parse XML response
             result = self._parse_xml_response(response.content)
@@ -300,7 +303,7 @@ if __name__ == "__main__":
 
         print("Testing search...")
         results = client.search_documents(
-            expert_query="QUICK_SEARCH ~ transport",
+            expert_query="transport",
             page=1,
             page_size=5,
             search_language="en",

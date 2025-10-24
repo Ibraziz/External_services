@@ -6,7 +6,7 @@ from typing import List, Optional
 from eurlex_client import EURLexClient
 from openai import OpenAI
 import logging
-
+import os
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -28,13 +28,6 @@ except ValueError as e:
 # Request/Response Models
 class SearchRequest(BaseModel):
     query: str
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "query": "QUICK_SEARCH ~ transport"
-            }
-        }
 
 
 class DocumentLink(BaseModel):
@@ -67,7 +60,7 @@ client = OpenAI(
 )
 
 class LawkeywordsRequest(BaseModel):
-    query: str
+    text: str
 
 class LawkeywordsResponse(BaseModel):
     keywords: list[str]
@@ -76,11 +69,11 @@ class LawkeywordsResponse(BaseModel):
 async def extract_law_keywords(request: LawkeywordsRequest):
     """relevant keywords service using Gemma-2-9b"""
     
-    logger.info(f"Extracting law keywords from text: '{request.query[:100]}...'")
+    logger.info(f"Extracting law keywords from text: '{request.text[:100]}...'")
     
     try:
         
-        prompt = f"Given the following text, identify the 3 most relevant legal/law keywords: {request.query}"
+        prompt = f"Given the following text, identify the 3 most relevant legal/law keywords: {request.text}"
         
         logger.info(f"Sending prompt: {prompt}")
 
@@ -116,12 +109,8 @@ async def extract_law_keywords(request: LawkeywordsRequest):
 @app.post("/search", response_model=SearchResponse)
 async def search_documents(request: SearchRequest):
     """
-    Search EUR-Lex documents using expert query syntax.
-    
-    Example queries:
-    - `QUICK_SEARCH ~ transport`
-    - `QUICK_SEARCH ~ "non-disclosure" AND QUICK_SEARCH ~ agreement`
-    - `QUICK_SEARCH ~ "air transport"`
+    Search EUR-Lex documents.
+    A text as input and returns a list of relevant legal documents from EUR-Lex.
     """
     if not eurlex_client:
         raise HTTPException(
@@ -134,10 +123,23 @@ async def search_documents(request: SearchRequest):
             status_code=400,
             detail="Query parameter is required and cannot be empty"
         )
+    # Extract law keywords from the text    
+    keyword_request = LawkeywordsRequest(text=request.query)
+    keywords_response = await extract_law_keywords(keyword_request)
+    logger.info(f"Extracted keywords: {keywords_response.keywords}")
+    
+    #check number of keywords, construct expert query
+    expert_query = keywords_response.keywords[0]
+    rest_query =  " and ".join(keywords_response.keywords[1:])
+    if rest_query:
+        expert_query += f" and {rest_query}"
+    logger.info(f"Constructed expert query: {expert_query}")
+
     
     # Call EUR-Lex client with default parameters
     results = eurlex_client.search_documents(
-        expert_query=request.query
+        expert_query=expert_query,
+        legislation=True
         # All other parameters use their defaults:
         # page=1, page_size=10, search_language="en",
         # exclude_all_consleg=False, limit_to_latest_consleg=False

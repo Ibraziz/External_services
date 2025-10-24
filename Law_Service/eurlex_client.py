@@ -80,6 +80,7 @@ class EURLexClient:
 
         Returns:
             Dictionary with search results
+        
         """
         # Validate
         if not expert_query or not expert_query.strip():
@@ -91,7 +92,10 @@ class EURLexClient:
         if search_language not in self.VALID_LANGUAGES:
             raise ValueError(f"Invalid language: {search_language}")
 
-        
+        # example of a more focused query:
+        # (Title ~ lease AND agreement) AND DTS_SUBDOM = LEGISLATION
+        # other variants: Title, Text
+        # for eu case law keywords : IX ~ lease AND agreement
         expert_query = f"QUICK_SEARCH ~ {expert_query}"
         # legislation filter
         legislation_str = " AND DTS_SUBDOM = LEGISLATION" if legislation else ""

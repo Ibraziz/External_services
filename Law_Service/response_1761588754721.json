@@ -1,0 +1,819 @@
+{
+  "summary": "This document is the first page of a Finnish Deed of Sale (Kauppakirja). It identifies the parties involved: the Seller, the City of Espoo, and the Buyer, whose information is left blank. The document states that the City Council's Business and Competitiveness Division made the final decision on the sale on May 6, 2024, under section 42.  The second page identifies the target of the sale as a specific plot of land in Espoo, including its property ID, surface area, and address. The transaction price is also stated on this page.  Pages 3-3 detail the payment terms of the sale, specifying a 2000 euro retaining fee already paid and the remaining balance due upon signing. It also clarifies that ownership and possession of the property transfer upon full payment.  The document further states that there are no existing mortgages or liens on the property. Finally, it outlines the City's right to establish easements and restrictions on the property for municipal purposes, with compensation provided for any resulting damage. Pages 4-4 detail the encumbrances on the property. The city reserves the right to set up encumbrances for utility lines free of charge and to place embankments, cuts, and other structures on the site for municipal purposes, compensating the buyer for any damage. The parties are responsible for taxes and other charges on the land for the duration of their ownership. The buyer has inspected the plot and compared its features with the provided documents, finding no issues. Pages 5-5 state that the buyer has reviewed the land documents and the layout maps and regulations for neighboring properties. The seller is responsible for any pre-existing soil contamination up to the level required by the town plan, but the primary responsibility lies with the party who caused the contamination. The seller is not aware of any soil contamination on the property. If contamination is found, the buyer must contact the City of Espoo's land unit before taking any action. The city will only cover additional costs related to cleaning up the contamination if all cleaning measures have been agreed upon with the land unit before implementation. The buyer is responsible for removing any minor debris present on the property before the sale at their own expense. Pages 6-6 further clarify the responsibilities regarding soil contamination. The buyer is responsible for removing any minor debris on the site prior to the transaction at their own expense. The buyer is also obligated to build on the site a building (or buildings) with a floor area of at least 70% of the amount of the building right on the site, approved by the building control authority. The buyer is responsible for carrying out the soil surveys related to the design of the construction project and for the structural solutions required by the soil related to the implementation of the project. The preliminary feasibility study carried out by the seller is not sufficient for the final construction plans. The buyer is obliged to find out the cables that may be located at the place of sale. The buyer is responsible for the costs arising from any necessary cable transfers.  Pages 7-7 outline a contractual penalty if the buyer transfers the land to a third party before fulfilling the construction obligation without the seller's consent. The buyer would have to pay the seller the full purchase price as compensation. This page also clarifies that no movables or buildings are included in the sale. Pages 8-8 show the signatures of the seller, buyer, and notary for the trade confirmation. Pages 9-9 include the notary's certificate confirming the signing of the deed and the identities of the parties involved. ",
+  "suggested_questions": [
+    "Who signed the Deed of Sale?",
+    "What did the notary confirm?",
+    "What legal chapter and section does the notary reference?"
+  ],
+  "search_responses": [
+    {
+      "query": "Text ~ Kauppakirja and Deed of Sale and Seller AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 0,
+      "num_results": 0,
+      "documents": [],
+      "error": null
+    },
+    {
+      "query": "Text ~ Property ID and Surface area and Address AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 251,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "Council Directive 94/43/EC of 27 July 1994 establishing Annex VI to Directive 91/414/EEC concerning the placing of plant protection products on the market",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:366398e2-bd54-459d-97a0-9608da74ccef"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:366398e2-bd54-459d-97a0-9608da74ccef"
+            }
+          ],
+          "reference": "eng_cellar:366398e2-bd54-459d-97a0-9608da74ccef_en",
+          "rank": 1
+        },
+        {
+          "title": "94/571/EC: Council Decision of 27 July 1994 adopting a specific programme for research and technological development, including demonstration, in the field of industrial and materials technologies (1994-1998)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:e5948622-4adc-437e-b4f0-eb0b2a8b57da"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:e5948622-4adc-437e-b4f0-eb0b2a8b57da"
+            }
+          ],
+          "reference": "eng_cellar:e5948622-4adc-437e-b4f0-eb0b2a8b57da_en",
+          "rank": 2
+        },
+        {
+          "title": "Council Regulation (EU) 2024/1745 of 24 June 2024 amending Regulation (EU) No 833/2014 concerning restrictive measures in view of Russia’s actions destabilising the situation in Ukraine",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:0a1306e7-3231-11ef-a61b-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:0a1306e7-3231-11ef-a61b-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:0a1306e7-3231-11ef-a61b-01aa75ed71a1_en",
+          "rank": 3
+        },
+        {
+          "title": "Commission Regulation (EU) No 965/2012 of 5 October 2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:3cb645b2-2a23-43c9-b842-b03665a6733a"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:3cb645b2-2a23-43c9-b842-b03665a6733a"
+            }
+          ],
+          "reference": "eng_cellar:3cb645b2-2a23-43c9-b842-b03665a6733a_en",
+          "rank": 4
+        },
+        {
+          "title": "Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:6c9b0d4b-831f-47fe-b551-ac13604d9797"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:6c9b0d4b-831f-47fe-b551-ac13604d9797"
+            }
+          ],
+          "reference": "eng_cellar:6c9b0d4b-831f-47fe-b551-ac13604d9797_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Transaction price and Finnish version and English version AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 114,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "COMMISSION DECISION of 20/01/1998 declaring a concentration to be compatible with the common market (Case No IV/M.1075 - NORDIC CAPITAL/MÖLNLYCKE CLINICAL/KOLMI) according to Council Regulation (EEC) No 4064/89 (Only the English text is authentic)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:3d2bb20e-9c7b-42b5-8512-dc6d754b0eb5"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:3d2bb20e-9c7b-42b5-8512-dc6d754b0eb5"
+            }
+          ],
+          "reference": "eng_cellar:3d2bb20e-9c7b-42b5-8512-dc6d754b0eb5_en",
+          "rank": 1
+        },
+        {
+          "title": "2007/164/EC: Commission Decision of 19 July 2006 declaring a concentration compatible with the common market and the functioning of the EEA Agreement (Case COMP/M.3796 — OMYA/J.M. HUBER PCC) (notified under document number C(2006) 3163) (Text with EEA relevance )",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:5c32eb36-6b4a-48ac-8e45-e4668ae7144c"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:5c32eb36-6b4a-48ac-8e45-e4668ae7144c"
+            }
+          ],
+          "reference": "eng_cellar:5c32eb36-6b4a-48ac-8e45-e4668ae7144c_en",
+          "rank": 2
+        },
+        {
+          "title": "COMMISSION DECISION of 02/06/1998 declaring a concentration to be compatible with the common market (Case No IV/M.931 - NESTE/IVO) according to Council Regulation (EEC) No 4064/89 (Only the English text is authentic)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:86e499cd-6c45-4120-a3a1-f8affce397f4"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:86e499cd-6c45-4120-a3a1-f8affce397f4"
+            }
+          ],
+          "reference": "eng_cellar:86e499cd-6c45-4120-a3a1-f8affce397f4_en",
+          "rank": 3
+        },
+        {
+          "title": "COMMISSION DECISION of 06/06/2001 declaring a concentration to be compatible with the common market (Case No IV/M.2397 - BC FUNDS/SANITEC) according to Council Regulation (EEC) No 4064/89 (Only the English text is authentic)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:d235dbc5-fc03-46f2-89aa-378c0d23040f"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:d235dbc5-fc03-46f2-89aa-378c0d23040f"
+            }
+          ],
+          "reference": "eng_cellar:d235dbc5-fc03-46f2-89aa-378c0d23040f_en",
+          "rank": 4
+        },
+        {
+          "title": "Commission Decision of 22/10/2009 declaring a concentration to be compatible with the common market (Case No COMP/M.5502 - MERCK / SCHERING-PLOUGH) according to Council Regulation (EC) No 139/2004 (Only the English text is authentic)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "doc",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/DOC/?uri=cellar:322e9a67-81b6-4ddb-8f0d-bf55a47286bd"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:322e9a67-81b6-4ddb-8f0d-bf55a47286bd"
+            }
+          ],
+          "reference": "eng_cellar:322e9a67-81b6-4ddb-8f0d-bf55a47286bd_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Retaining fee and Payment terms and Ownership transfer AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 536,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "Commission Regulation (EC) No 2086/2004 of 19 November 2004 amending Regulation (EC) No 1725/2003 on the adoption of certain international accounting standards in accordance with Regulation (EC) No 1606/2002 of the European Parliament and of the Council as regards the insertion of IAS 39Text with EEA relevance",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:9afcbe41-10da-4b0f-bd34-63ad006f1c35"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:9afcbe41-10da-4b0f-bd34-63ad006f1c35"
+            }
+          ],
+          "reference": "eng_cellar:9afcbe41-10da-4b0f-bd34-63ad006f1c35_en",
+          "rank": 1
+        },
+        {
+          "title": "2008/874/EC: Decision of the European Central Bank of 14 November 2008 on the implementation of Regulation ECB/2008/11 of 23 October 2008 on temporary changes to the rules relating to eligibility of collateral (ECB/2008/15)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:a69c9471-6a4c-4fa5-b2ae-cbed72b20dfd"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:a69c9471-6a4c-4fa5-b2ae-cbed72b20dfd"
+            }
+          ],
+          "reference": "eng_cellar:a69c9471-6a4c-4fa5-b2ae-cbed72b20dfd_en",
+          "rank": 2
+        },
+        {
+          "title": "Commission Regulation (EC) No 569/2003 of 28 March 2003 amending Regulation (EC) No 1238/95 establishing implementation rules for the application of Council Regulation (EC) No 2100/94 as regards the fees payable to the Community Plant Variety Office",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:e340ee55-b55a-46c3-82cb-5d0983cf390d"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:e340ee55-b55a-46c3-82cb-5d0983cf390d"
+            }
+          ],
+          "reference": "eng_cellar:e340ee55-b55a-46c3-82cb-5d0983cf390d_en",
+          "rank": 3
+        },
+        {
+          "title": "Commission Regulation (EU) 2016/2067 of 22 November 2016 amending Regulation (EC) No 1126/2008 adopting certain international accounting standards in accordance with Regulation (EC) No 1606/2002 of the European Parliament and of the Council as regards International Financial Reporting Standard 9 (Text with EEA relevance )",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:8554e7e1-b603-11e6-9e3c-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:8554e7e1-b603-11e6-9e3c-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:8554e7e1-b603-11e6-9e3c-01aa75ed71a1_en",
+          "rank": 4
+        },
+        {
+          "title": "2014/884/EU: Commission Decision of 11 March 2014 on State aid SA.34445 (12/C) implemented by Denmark for the transfer of property-related assets from FIH to the FSC (notified under document C(2014) 1280) Text with EEA relevance",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:fef56798-81ca-11e4-89f7-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:fef56798-81ca-11e4-89f7-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:fef56798-81ca-11e4-89f7-01aa75ed71a1_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Encumbrances and Utility lines and Compensation AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 10,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "92/465/EEC: Commission Decision of 14 April 1992 concerning aid granted by the Land of Berlin to Daimler- Benz AG Germany (C 3/91 ex NN 5/91) (Only the German text is authentic)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:4cafc852-f61f-4f3a-8441-a23e9795faf2"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:4cafc852-f61f-4f3a-8441-a23e9795faf2"
+            }
+          ],
+          "reference": "eng_cellar:4cafc852-f61f-4f3a-8441-a23e9795faf2_en",
+          "rank": 1
+        },
+        {
+          "title": "Commission Implementing Regulation (EU) 2021/451 of 17 December 2020 laying down implementing technical standards for the application of Regulation (EU) No 575/2013 of the European Parliament and of the Council with regard to supervisory reporting of institutions and repealing Implementing Regulation (EU) No 680/2014 (Text with EEA relevance)",
+          "language": "en",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:b006a26b-8883-11eb-ac4c-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:b006a26b-8883-11eb-ac4c-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:b006a26b-8883-11eb-ac4c-01aa75ed71a1_en",
+          "rank": 2
+        },
+        {
+          "title": "Regulation (EU) 2021/23 of the European Parliament and of the Council of 16 December 2020 on a framework for the recovery and resolution of central counterparties and amending Regulations (EU) No 1095/2010, (EU) No 648/2012, (EU) No 600/2014, (EU) No 806/2014 and (EU) 2015/2365 and Directives 2002/47/EC, 2004/25/EC, 2007/36/EC, 2014/59/EU and (EU) 2017/1132 (Text with EEA relevance)",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:85656db7-5c53-11eb-b487-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:85656db7-5c53-11eb-b487-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:85656db7-5c53-11eb-b487-01aa75ed71a1_en",
+          "rank": 3
+        },
+        {
+          "title": "Commission Decision (EU) 2015/658 of 8 October 2014 on the aid measure SA.34947 (2013/C) (ex 2013/N) which the United Kingdom is planning to implement for support to the Hinkley Point C nuclear power station (notified under document C(2014) 7142) (Text with EEA relevance)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:60110181-ed6e-11e4-892c-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:60110181-ed6e-11e4-892c-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:60110181-ed6e-11e4-892c-01aa75ed71a1_en",
+          "rank": 4
+        },
+        {
+          "title": "Directive 2014/59/EU of the European Parliament and of the Council of 15 May 2014 establishing a framework for the recovery and resolution of credit institutions and investment firms and amending Council Directive 82/891/EEC, and Directives 2001/24/EC, 2002/47/EC, 2004/25/EC, 2005/56/EC, 2007/36/EC, 2011/35/EU, 2012/30/EU and 2013/36/EU, and Regulations (EU) No 1093/2010 and (EU) No 648/2012, of the European Parliament and of the Council Text with EEA relevance",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:d108610e-f1f7-11e3-8cd4-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:d108610e-f1f7-11e3-8cd4-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:d108610e-f1f7-11e3-8cd4-01aa75ed71a1_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Taxes and Fees and Ownership AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 827,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "2008/874/EC: Decision of the European Central Bank of 14 November 2008 on the implementation of Regulation ECB/2008/11 of 23 October 2008 on temporary changes to the rules relating to eligibility of collateral (ECB/2008/15)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:a69c9471-6a4c-4fa5-b2ae-cbed72b20dfd"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:a69c9471-6a4c-4fa5-b2ae-cbed72b20dfd"
+            }
+          ],
+          "reference": "eng_cellar:a69c9471-6a4c-4fa5-b2ae-cbed72b20dfd_en",
+          "rank": 1
+        },
+        {
+          "title": "94/1069/EC: Commission Recommendation of 7 December 1994 on the transfer of small and medium-sized enterprises (Text with EEA relevance)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:d1d7cc83-a0ca-45e2-aeea-26d0e3b0588c"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:d1d7cc83-a0ca-45e2-aeea-26d0e3b0588c"
+            }
+          ],
+          "reference": "eng_cellar:d1d7cc83-a0ca-45e2-aeea-26d0e3b0588c_en",
+          "rank": 2
+        },
+        {
+          "title": "Commission Regulation (EC) No 1503/2006 of 28 September 2006 implementing and amending Council Regulation (EC) No 1165/98 concerning short-term statistics as regards definitions of variables, list of variables and frequency of data compilation",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:ba3416f4-e6ba-4287-94fb-592567499f2b"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:ba3416f4-e6ba-4287-94fb-592567499f2b"
+            }
+          ],
+          "reference": "eng_cellar:ba3416f4-e6ba-4287-94fb-592567499f2b_en",
+          "rank": 3
+        },
+        {
+          "title": "Commission Regulation (EC) No 16/2003 of 6 January 2003 laying down special detailed rules for implementing Council Regulation (EC) No 1164/94 as regards eligibility of expenditure in the context of measures part-financed by the Cohesion Fund",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:8fd454d5-ac26-4e32-ac57-647ef89c25d6"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:8fd454d5-ac26-4e32-ac57-647ef89c25d6"
+            }
+          ],
+          "reference": "eng_cellar:8fd454d5-ac26-4e32-ac57-647ef89c25d6_en",
+          "rank": 4
+        },
+        {
+          "title": "Commission Decision (EU) 2019/1116 of 19 December 2017 on State aid SA.33829 (2012/C) Maltese tonnage tax scheme and other State measures in favour of shipping companies and their shareholders (notified under document C(2017) 8734) (Text with EEA relevance.)",
+          "language": "en",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:e0c1b7d7-9bd2-11e9-9d01-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:e0c1b7d7-9bd2-11e9-9d01-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:e0c1b7d7-9bd2-11e9-9d01-01aa75ed71a1_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Soil contamination and Responsibility and Cleanup AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 0,
+      "num_results": 0,
+      "documents": [],
+      "error": null
+    },
+    {
+      "query": "Text ~ Construction obligation and Building right and Floor area AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 433,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "Commission Recommendation (EU) 2024/1716 of 19 June 2024 setting out guidelines for the interpretation of Articles 5, 6 and 7 of Directive (EU) 2023/1791 of the European Parliament and of the Council as regards energy consumption in the public sector, renovation of public buildings and public procurement (notified under document C(2024) 3744)",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:1cd57500-34e9-11ef-b441-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:1cd57500-34e9-11ef-b441-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:1cd57500-34e9-11ef-b441-01aa75ed71a1_en",
+          "rank": 1
+        },
+        {
+          "title": "Commission Decision of 22/07/2015 declaring a concentration to be compatible with the common market (Case No COMP/M.7498 - COMPAGNIE DE SAINT GOBAIN / SIKA) according to Council Regulation (EC) No 139/2004 (Only the English text is authentic)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "doc",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/DOC/?uri=cellar:1c8b33b8-dcce-4027-9ed6-c19b33a48e83"
+            }
+          ],
+          "reference": "eng_cellar:1c8b33b8-dcce-4027-9ed6-c19b33a48e83_en",
+          "rank": 2
+        },
+        {
+          "title": "Commission Regulation (EC) No 1503/2006 of 28 September 2006 implementing and amending Council Regulation (EC) No 1165/98 concerning short-term statistics as regards definitions of variables, list of variables and frequency of data compilation",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:ba3416f4-e6ba-4287-94fb-592567499f2b"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:ba3416f4-e6ba-4287-94fb-592567499f2b"
+            }
+          ],
+          "reference": "eng_cellar:ba3416f4-e6ba-4287-94fb-592567499f2b_en",
+          "rank": 3
+        },
+        {
+          "title": "Commission Decision of 08/02/2023 declaring a concentration to be compatible with the common market (Case No COMP/M.10560 - SIKA / MBCC GROUP) according to Council Regulation (EC) No 139/2004 (Only the English text is authentic)",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:a1c57302-df7a-11ee-a5fe-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:a1c57302-df7a-11ee-a5fe-01aa75ed71a1_en",
+          "rank": 4
+        },
+        {
+          "title": "1999/458/EC: Commission Decision of 11 November 1998 declaring a concentration to be compatible with the common market and the functioning of the EEA Agreement (Case IV/M.1157 - Skanska/Scancem) (notified under document number C(1998) 3434) (Only the English text is authentic) (Text with EEA relevance)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:64aea542-bd25-4e43-808e-ff1c1fa14384"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:64aea542-bd25-4e43-808e-ff1c1fa14384"
+            }
+          ],
+          "reference": "eng_cellar:64aea542-bd25-4e43-808e-ff1c1fa14384_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Contractual penalty and Transfer and Compensation AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 587,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "Commission Decision (EU) 2019/1246 of 23 November 2018 on alleged State aid SA.35905(2016/C) (ex 2015/NN)(ex 2012/CP) — Belgium Concessionaires active in the Port of Antwerp (notified under document C(2018) 7690) (Text with EEA relevance.)",
+          "language": "en",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:be35595d-ac4c-11e9-9d01-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:be35595d-ac4c-11e9-9d01-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:be35595d-ac4c-11e9-9d01-01aa75ed71a1_en",
+          "rank": 1
+        },
+        {
+          "title": "Commission Delegated Regulation (EU) 2018/1229 of 25 May 2018 supplementing Regulation (EU) No 909/2014 of the European Parliament and of the Council with regard to regulatory technical standards on settlement discipline (Text with EEA relevance.)",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:32fc8952-b714-11e8-99ee-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:32fc8952-b714-11e8-99ee-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:32fc8952-b714-11e8-99ee-01aa75ed71a1_en",
+          "rank": 2
+        },
+        {
+          "title": "Regulation (EU) 2023/2854 of the European Parliament and of the Council of 13 December 2023 on harmonised rules on fair access to and use of data and amending Regulation (EU) 2017/2394 and Directive (EU) 2020/1828 (Data Act) (Text with EEA relevance)",
+          "language": "en",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:ef51c6ab-a06c-11ee-b164-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:ef51c6ab-a06c-11ee-b164-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:ef51c6ab-a06c-11ee-b164-01aa75ed71a1_en",
+          "rank": 3
+        },
+        {
+          "title": "Regulation (EU) 2021/23 of the European Parliament and of the Council of 16 December 2020 on a framework for the recovery and resolution of central counterparties and amending Regulations (EU) No 1095/2010, (EU) No 648/2012, (EU) No 600/2014, (EU) No 806/2014 and (EU) 2015/2365 and Directives 2002/47/EC, 2004/25/EC, 2007/36/EC, 2014/59/EU and (EU) 2017/1132 (Text with EEA relevance)",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:85656db7-5c53-11eb-b487-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:85656db7-5c53-11eb-b487-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:85656db7-5c53-11eb-b487-01aa75ed71a1_en",
+          "rank": 4
+        },
+        {
+          "title": "Council Decision of 24 July 1973 amending the Decision of 29 September 1970 on the association of the Overseas Countries and Territories with the European Economic Community",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:b14488d1-c04f-4277-81ed-0b7a4f718d42"
+            }
+          ],
+          "reference": "eng_cellar:b14488d1-c04f-4277-81ed-0b7a4f718d42_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Signatures and Notary and Confirmation AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 65,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "Regulation (EU) 2016/1191 of the European Parliament and of the Council of 6 July 2016 on promoting the free movement of citizens by simplifying the requirements for presenting certain public documents in the European Union and amending Regulation (EU) No 1024/2012",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:1d2af2a3-5303-11e6-89bd-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:1d2af2a3-5303-11e6-89bd-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:1d2af2a3-5303-11e6-89bd-01aa75ed71a1_en",
+          "rank": 1
+        },
+        {
+          "title": "EAEC Council: Decision on the establishment of the \"société d'energie nucléaire franco-belge des Ardennes\" Joint Undertaking",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:1ae5e1ce-9438-4f68-b3f2-aa3af68b2844"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:1ae5e1ce-9438-4f68-b3f2-aa3af68b2844"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:1ae5e1ce-9438-4f68-b3f2-aa3af68b2844"
+            }
+          ],
+          "reference": "eng_cellar:1ae5e1ce-9438-4f68-b3f2-aa3af68b2844_en",
+          "rank": 2
+        },
+        {
+          "title": "Directive (EU) 2025/25 of the European Parliament and of the Council of 19 December 2024 amending Directives 2009/102/EC and (EU) 2017/1132 as regards further expanding and upgrading the use of digital tools and processes in company law (Text with EEA relevance)",
+          "language": "en",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:3def3caa-cef6-11ef-be2a-01aa75ed71a1"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:3def3caa-cef6-11ef-be2a-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:3def3caa-cef6-11ef-be2a-01aa75ed71a1_en",
+          "rank": 3
+        },
+        {
+          "title": "2003/372/EC: Commission Decision of 11 December 2002 on aid granted by Greece to Olympic Airways (notified under document number C(2002) 4831) (Text with EEA relevance)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:b234b0fe-509d-4e31-a484-3c10bc27bc14"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:b234b0fe-509d-4e31-a484-3c10bc27bc14"
+            }
+          ],
+          "reference": "eng_cellar:b234b0fe-509d-4e31-a484-3c10bc27bc14_en",
+          "rank": 4
+        },
+        {
+          "title": "87/297/Euratom: Council Decision of 18 May 1987 approving an amendment of the Statutes (articles of association) of the Joint Undertaking 'Société d'énergie nucléaire franco-belge des Ardennes' (SENA)",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:b59fdf82-b06f-4a8c-92bd-8eda9c33fcae"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:b59fdf82-b06f-4a8c-92bd-8eda9c33fcae"
+            }
+          ],
+          "reference": "eng_cellar:b59fdf82-b06f-4a8c-92bd-8eda9c33fcae_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Text ~ Notary certificate and Code of Real Estate and Chapter 2 AND DTS_SUBDOM = LEGISLATION",
+      "success": true,
+      "total_hits": 22,
+      "num_results": 5,
+      "documents": [
+        {
+          "title": "Directive 2000/31/EC of the European Parliament and of the Council of 8 June 2000 on certain legal aspects of information society services, in particular electronic commerce, in the Internal Market ('Directive on electronic commerce')",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:b244164f-dd29-48e9-9063-a86ef4ea7ad9"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:b244164f-dd29-48e9-9063-a86ef4ea7ad9"
+            }
+          ],
+          "reference": "eng_cellar:b244164f-dd29-48e9-9063-a86ef4ea7ad9_en",
+          "rank": 1
+        },
+        {
+          "title": "2005/106/EC: Council decision of 22 November 2004 on the signing and provisional application of an Additional Protocol to the Agreement establishing an association between the European Community and its Member States, of the one part, and the Republic of Chile, of the other part, to take account of the accession of the Czech Republic, the Republic of Estonia, the Republic of Cyprus, the Republic of Latvia, the Republic of Lithuania, the Republic of Hungary, the Republic of Malta, the Republic of Poland, the Republic of Slovenia and the Slovak Republic to the European Union",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:27a7b24a-08cf-4672-bb9c-b3dcfdd902ba"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:27a7b24a-08cf-4672-bb9c-b3dcfdd902ba"
+            }
+          ],
+          "reference": "eng_cellar:27a7b24a-08cf-4672-bb9c-b3dcfdd902ba_en",
+          "rank": 2
+        },
+        {
+          "title": "2007/611/EC: Council Decision of 23 July 2007 on the signing and provisional application of a Second Additional Protocol to the Agreement establishing an association between the European Community and its Member States, of the one part, and the Republic of Chile, of the other part, to take account of the accession of the Republic of Bulgaria and Romania to the European Union",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:210fb4a9-c1dc-4293-b19d-1c77b2a632c8"
+            },
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:210fb4a9-c1dc-4293-b19d-1c77b2a632c8"
+            }
+          ],
+          "reference": "eng_cellar:210fb4a9-c1dc-4293-b19d-1c77b2a632c8_en",
+          "rank": 3
+        },
+        {
+          "title": "Regulation (EU) 2024/1624 of the European Parliament and of the Council of 31 May 2024 on the prevention of the use of the financial system for the purposes of money laundering or terrorist financing (Text with EEA relevance)",
+          "language": "en",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:868bf3cf-2dd4-11ef-a61b-01aa75ed71a1"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:868bf3cf-2dd4-11ef-a61b-01aa75ed71a1"
+            }
+          ],
+          "reference": "eng_cellar:868bf3cf-2dd4-11ef-a61b-01aa75ed71a1_en",
+          "rank": 4
+        },
+        {
+          "title": "Directive 2006/123/EC of the European Parliament and of the Council of 12 December 2006 on services in the internal market",
+          "language": "unknown",
+          "links": [
+            {
+              "type": "pdf",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=cellar:9a83fd27-402f-43bd-8b3f-1ebba1aed357"
+            },
+            {
+              "type": "html",
+              "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=cellar:9a83fd27-402f-43bd-8b3f-1ebba1aed357"
+            }
+          ],
+          "reference": "eng_cellar:9a83fd27-402f-43bd-8b3f-1ebba1aed357_en",
+          "rank": 5
+        }
+      ],
+      "error": null
+    }
+  ]
+}

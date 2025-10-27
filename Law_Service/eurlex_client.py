@@ -61,7 +61,7 @@ class EURLexClient:
         self,
         expert_query: str,
         page: int = 1,
-        page_size: int = 10,
+        page_size: int = 5,
         search_language: str = "en",
         legislation: bool = True,
         timeout: int = 30,
@@ -96,7 +96,7 @@ class EURLexClient:
         # (Title ~ lease AND agreement) AND DTS_SUBDOM = LEGISLATION
         # other variants: Title, Text
         # for eu case law keywords : IX ~ lease AND agreement
-        expert_query = f"QUICK_SEARCH ~ {expert_query}"
+        expert_query = f"Text ~ {expert_query}"
         # legislation filter
         legislation_str = " AND DTS_SUBDOM = LEGISLATION" if legislation else ""
         full_query = expert_query + legislation_str
@@ -152,12 +152,16 @@ class EURLexClient:
                     "results": [],
                 }
 
-            # Parse XML response
+            
+            
+            # Parse XML respons
             result = self._parse_xml_response(response.content)
             result["success"] = True
+            result['query'] = full_query
             result["error"] = None
             result["page"] = page
             result["language"] = search_language
+            
 
             return result
 

@@ -2,8 +2,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict
 from eurlex_client import EURLexClient
+from contract_summary import analyze_legal_document, LegalAnalysis
 from openai import OpenAI
 import logging
 import os
@@ -26,6 +27,18 @@ except ValueError as e:
 
 
 # Request/Response Models
+class Page(BaseModel):
+    page_number: int
+    text: str
+    layout: Optional[list] = None
+
+class Result(BaseModel):
+    pages: Dict[str, Page]
+
+class DocumentRequest(BaseModel):
+    result: Result
+
+
 class SearchRequest(BaseModel):
     query: str
 
@@ -44,11 +57,19 @@ class Document(BaseModel):
 
 
 class SearchResponse(BaseModel):
+    query: str
     success: bool
     total_hits: int
     num_results: int
     documents: List[Document]
     error: Optional[str] = None
+    
+    
+
+class LegalAnalysisResponse(BaseModel):
+    summary: str
+    suggested_questions: List[str]
+    search_responses: List[SearchResponse]
 
 
 # Connect to local vLLM server
@@ -59,53 +80,63 @@ client = OpenAI(
     api_key = ""
 )
 
-class LawkeywordsRequest(BaseModel):
-    text: str
 
-class LawkeywordsResponse(BaseModel):
-    keywords: list[str]
-
-@app.post("/Lawkeywords", response_model=LawkeywordsResponse)
-async def extract_law_keywords(request: LawkeywordsRequest):
-    """relevant keywords service using Gemma-2-9b"""
+@app.post("/LegalAnalysis", response_model=LegalAnalysisResponse)
+async def extract_law_keywords(request: DocumentRequest):
+    """
+    Analyze legal document and extract summary, keywords, and suggested questions.
+    Uses the analyze_legal_document orchestrator from contract_summary module.
+    """
     
-    logger.info(f"Extracting law keywords from text: '{request.text[:100]}...'")
+    logger.info(f"Analyzing legal document with {len(request.result.pages)} pages")
     
     try:
+        data_dict = request.model_dump()
         
-        prompt = f"Given the following text, identify the 3 most relevant legal/law keywords: {request.text}"
+        logger.info(f"Starting legal document analysis...")
         
-        logger.info(f"Sending prompt: {prompt}")
-
-        response = client.responses.parse(
-            model="google/gemma-2-9b-it",
-            input=[
-                {"role": "system", "content": "your task is to extract legal/law keywords from the user's text. Provide only the keywords without any additional information. the keywords should be relevant to legal contexts and fully capture the text."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            text_format = LawkeywordsResponse
+        result = analyze_legal_document(
+            data_dict=data_dict
         )
-
-        logger.info(f"Raw response: {response.output_parsed}")
         
-        if not response.output_parsed:
-            logger.error("Empty response from model!")
-            raise HTTPException(status_code=500, detail="Model returned empty response")
+        logger.info(f"Analysis complete. Keywords: {result['keywords']}")
 
-        keywords_text =  response.output_parsed
-        logger.info(f"Keywords: '{keywords_text}'")
+        #check number of keywords, construct expert query
+        keywords = result['keywords']  # list of lists keywords
+        
+        queries = []
+        # Build expert query from keywords
+        for keywords in result['keywords']:      
+            expert_query = keywords[0]
+            rest_query = " and ".join(keywords[1:])
+            if rest_query:
+                expert_query += f" and {rest_query}"
+            
+            logger.info(f"Searching with query: {expert_query}")
+            
+            search_request = SearchRequest(query=expert_query)
+            search_response = await search_documents(search_request)
+            # list of SearchResponse
+            queries.append(search_response)
+            
+            
 
-        return LawkeywordsResponse(keywords=keywords_text.keywords)
-
+            
+        
+        
+        # Return the analysis result with search results
+        return LegalAnalysisResponse(
+            summary=result['summary'],
+            suggested_questions=result['suggested_questions'],
+            search_responses=queries
+        )
+        
     except Exception as e:
-        logger.error(f"Keyword extraction error: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Keyword extraction error: {str(e)}")
+        logger.error(f"Legal analysis error: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Legal analysis error: {str(e)}")
 
 
 
-
-# Endpoints
 @app.post("/search", response_model=SearchResponse)
 async def search_documents(request: SearchRequest):
     """
@@ -123,22 +154,12 @@ async def search_documents(request: SearchRequest):
             status_code=400,
             detail="Query parameter is required and cannot be empty"
         )
-    # Extract law keywords from the text    
-    keyword_request = LawkeywordsRequest(text=request.query)
-    keywords_response = await extract_law_keywords(keyword_request)
-    logger.info(f"Extracted keywords: {keywords_response.keywords}")
-    
-    #check number of keywords, construct expert query
-    expert_query = keywords_response.keywords[0]
-    rest_query =  " and ".join(keywords_response.keywords[1:])
-    if rest_query:
-        expert_query += f" and {rest_query}"
-    logger.info(f"Constructed expert query: {expert_query}")
+
 
     
     # Call EUR-Lex client with default parameters
     results = eurlex_client.search_documents(
-        expert_query=expert_query,
+        expert_query=request.query,
         legislation=True
         # All other parameters use their defaults:
         # page=1, page_size=10, search_language="en",
@@ -152,7 +173,8 @@ async def search_documents(request: SearchRequest):
             total_hits=0,
             num_results=0,
             documents=[],
-            error=results.get('error', 'Unknown error occurred')
+            error=results.get('error', 'Unknown error occurred'),
+            query=results.get('query', '')
         )
     
     # Transform results to our response format
@@ -179,6 +201,7 @@ async def search_documents(request: SearchRequest):
         ))
     
     return SearchResponse(
+        query=results.get('query', ''),
         success=True,
         total_hits=results.get('totalhits', 0),
         num_results=results.get('numhits', 0),

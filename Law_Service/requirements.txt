@@ -4,3 +4,4 @@ pydantic
 zeep
 python-dotenv
 lxml
+openai

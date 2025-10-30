@@ -80,7 +80,7 @@ class EURLexClient:
 
         Returns:
             Dictionary with search results
-        
+
         """
         # Validate
         if not expert_query or not expert_query.strip():
@@ -101,7 +101,7 @@ class EURLexClient:
         legislation_str = " AND DTS_SUBDOM = LEGISLATION" if legislation else ""
         full_query = expert_query + legislation_str
         print(f"Full query: ![CDATA[{full_query}]")
-        
+
         # Build SOAP envelope
         soap_body = f"""
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sear="http://eur-lex.europa.eu/search">
@@ -137,9 +137,9 @@ class EURLexClient:
                 timeout=timeout,
             )
 
-            #save xml response
-            #self._save_xml_response(response.content, page, full_query)
-            
+            # save xml response
+            # self._save_xml_response(response.content, page, full_query)
+
             # Check for HTTP errors
             if response.status_code != 200:
                 return {
@@ -152,16 +152,13 @@ class EURLexClient:
                     "results": [],
                 }
 
-            
-            
             # Parse XML respons
             result = self._parse_xml_response(response.content)
             result["success"] = True
-            result['query'] = full_query
+            result["query"] = full_query
             result["error"] = None
             result["page"] = page
             result["language"] = search_language
-            
 
             return result
 

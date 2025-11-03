@@ -141,7 +141,7 @@ class EURLexClient:
             # self._save_xml_response(response.content, page, full_query)
 
             # Check for HTTP errors
-            if response.status_code != 200:
+            if response.status_code not in (200, 202):
                 return {
                     "success": False,
                     "error": f"HTTP {response.status_code}: {response.text[:200]}",
@@ -308,7 +308,7 @@ if __name__ == "__main__":
 
         print("Testing search...")
         results = client.search_documents(
-            expert_query="transport",
+            expert_query="data",
             page=1,
             page_size=5,
             search_language="en",
